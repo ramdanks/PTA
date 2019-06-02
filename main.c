@@ -59,8 +59,10 @@ int farewell () {
 }
 
 void arrowHere(int realPosition, int arrowPosition) {
+
     if(realPosition == arrowPosition){
     printf("--> - ");
+    SetColorAndBackground(4,15);
     }
     else {
     printf("      ");
@@ -125,12 +127,16 @@ printf("MMMMMMMM               MMMMMMMM  aaaaaaaaaa  aaaaiiiiiiii nnnnnn    nnnn
 
     gotoxy(73,26);
     arrowHere(1,position); printf(" [1] Easy");
+    SetColorAndBackground(0,15);
     gotoxy(73,28);
     arrowHere(2,position); printf(" [2] Medium");
+    SetColorAndBackground(0,15);
     gotoxy(73,30);
     arrowHere(3,position); printf(" [3] Hard");
+    SetColorAndBackground(0,15);
     gotoxy(73,32);
     arrowHere(4,position); printf(" [4] Back");
+    SetColorAndBackground(0,15);
 
     gotoxy(50,46);
     keyPressed = getch();
@@ -232,16 +238,22 @@ printf("[ENT] - Submit    [UP/DOWN] - Change Value \t ");
 
 gotoxy(70,26);
 arrowHere(1,position); printf(" [1] Quick Play");
+SetColorAndBackground(0,15);
 gotoxy(70,28);
 arrowHere(2,position); printf(" [2] Select Level");
+SetColorAndBackground(0,15);
 gotoxy(70,30);
 arrowHere(3,position); printf(" [3] Instruction");
+SetColorAndBackground(0,15);
 gotoxy(70,32);
 arrowHere(4,position); printf(" [4] Leaderboard");
+SetColorAndBackground(0,15);
 gotoxy(70,34);
 arrowHere(5,position); printf(" [5] About");
+SetColorAndBackground(0,15);
 gotoxy(70,36);
 arrowHere(6,position); printf(" [6] Exit");
+SetColorAndBackground(0,15);
 
 gotoxy(50,46);
 keyPressed = getch();
@@ -407,7 +419,10 @@ if (keyPressed==13){
         rpt=1;
         system("cls");
         angka(pg);
-        system("Pause");
+        gotoxy(64,7);
+        printf("Info : ");
+        gotoxy(71,7);
+        system("pause");
         system("cls");
         rpt=0;
         sel1(pg);
@@ -509,7 +524,10 @@ if (keyPressed==13){
         rpt=1;
         system("cls");
         angka(pg);
-        system("Pause");
+        gotoxy(64,7);
+        printf("Info : ");
+        gotoxy(71,7);
+        system("pause");
         system("cls");
         rpt=0;
         sel2(pg);
@@ -611,7 +629,10 @@ if (keyPressed==13){
         rpt=1;
         system("cls");
         angka(pg);
-        system("Pause");
+        gotoxy(64,7);
+        printf("Info : ");
+        gotoxy(71,7);
+        system("pause");
         system("cls");
         rpt=0;
         sel3(pg);
@@ -712,7 +733,10 @@ if (keyPressed==13){
         rpt=1;
         system("cls");
         angka(pg);
-        system("Pause");
+        gotoxy(64,7);
+        printf("Info : ");
+        gotoxy(71,7);
+        system("pause");
         system("cls");
         rpt=0;
         sel4(pg);
@@ -804,7 +828,7 @@ void angka(pg){
     //WHERE"S MY SELECT
     SetColorAndBackground(4,15);
     if (kol==1) {
-        printf("\t\t\t\t\t\t[<]=== VV ===[>]");
+        printf("\t\t\t\t\t\t       VV ===[>]");
     }
     if (kol==2) {
         printf("\t\t\t\t\t\t\t\t   [<]=== VV ===[>]");
@@ -813,7 +837,7 @@ void angka(pg){
         printf("\t\t\t\t\t\t\t\t\t\t     [<]=== VV ===[>]");
     }
     if (kol==4) {
-        printf("\t\t\t\t\t\t\t\t\t\t\t\t        [<]=== VV ===[>]");
+        printf("\t\t\t\t\t\t\t\t\t\t\t\t        [<]=== VV ");
     }
     SetColorAndBackground(0,15);
 
@@ -1186,12 +1210,19 @@ printf("[ESC] - Exit    [ENT] - Submit    [UP/DOWN] - Change Value    [LEFT/RIGH
 }
 
 void mgbox(pg) {
+
+    if (rpt==1) {
+        SetColorAndBackground(4,15);
+        printf("________________________________________________________________________________________________________________________________________________________________________\n\n");
+        printf("%s\n", inf[3]);
+        printf("________________________________________________________________________________________________________________________________________________________________________\n\n");
+        SetColorAndBackground(0,15);
+    }
+
+    else {
 SetColorAndBackground(2,15);
     printf("________________________________________________________________________________________________________________________________________________________________________\n\n");
-    if (rpt==1) {
-        printf("%s\n", inf[3]);
-    }
-    else if (pg==1) {
+    if (pg==1) {
     printf("%s\n", inf[0]);
     }
     else if (pg==2) {
@@ -1202,6 +1233,7 @@ SetColorAndBackground(2,15);
     }
     printf("________________________________________________________________________________________________________________________________________________________________________\n\n");
 SetColorAndBackground(0,15);
+    }
 }
 
 void lose() {
@@ -1705,9 +1737,38 @@ int lead()
     int i=0,j=0;
     int mat[100][100];
     int ny=17;
+    FILE *fstream;
+    FILE *fp;
 
-	    //OPEN BORDER
-	FILE *fp;
+seq1 :
+    fstream = fopen("easy.csv","r");
+    if(fstream == NULL)   {
+        goto seq2;
+    }
+    else {
+        goto checker;
+    }
+seq2 :
+    fstream = fopen("medium.csv","r");
+    if(fstream == NULL)   {
+        goto seq3;
+    }
+    else {
+        goto checker;
+    }
+seq3 :
+    fstream = fopen("hard.csv","r");
+    if(fstream == NULL)   {
+        goto noscore;
+    }
+    else {
+        goto checker;
+    }
+
+checker :
+
+            //OPEN BORDER
+
 	fp=fopen("border-leaderboard.txt", "r");
 	do
     {
@@ -1717,8 +1778,9 @@ int lead()
 	while(ser!=EOF);
 	fflush(stdin);
 
-    //OPEN FILE EASY
-	    FILE *fstream = fopen("easy.csv","r");
+        //OPEN FILE EASY
+
+	    fstream = fopen("easy.csv","r");
 
     	while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL)
     {
@@ -1736,6 +1798,7 @@ int lead()
 	}
 
 	    //OPEN FILE MEDIUM
+
 	    ny=17;
 	    fstream = fopen("medium.csv","r");
 
@@ -1755,6 +1818,7 @@ int lead()
 	}
 
 	    //OPEN FILE HARD
+
 	    ny=17;
 	    fstream = fopen("hard.csv","r");
 
@@ -1773,23 +1837,28 @@ int lead()
 		++i ;
 	}
 
-		if(fstream == NULL)   {
-    gotoxy(50,20);
-    printf("<<======================================================>>\n");
-	gotoxy(50,22);
-	printf("              Belum ada yang Mencetak Skor");
+	gotoxy(0,40);
+	system("pause");
+	menu();
+
+noscore :
+
+	            //BELUM ADA SKOR TERCETAK
+
+    if(fstream == NULL)   {
+    gotoxy(50,19);
+    printf("   <<======================================================>>\n");
+	gotoxy(50,21);
+	printf("                 Belum ada yang Mencetak Skor");
 	gotoxy(50,23);
-	printf("   Jadilah pencetak Skor pertama dalam Test Your Logic!");
+	printf("      Jadilah pencetak Skor pertama dalam Test Your Logic!");
     gotoxy(50,25);
-    printf("<<======================================================>>\n\n");
+    printf("   <<======================================================>>\n\n");
     gotoxy(50,27);
     system ("pause");
     menu();
     }
 
-	gotoxy(0,40);
-	system("pause");
-	menu();
 }
 
 void gotoxy(ex, ye)
