@@ -395,7 +395,8 @@ while (1) {
 
 repeat :
 keyPressed = getch();
-system("cls");
+if (keyPressed !=13) {
+system("cls");}
 
 if (keyPressed==27){
     lose();
@@ -404,6 +405,7 @@ if (keyPressed==27){
 if (keyPressed==13){
         if (x==y || x==z || x==a || y==z || y==a || z==a) {
         rpt=1;
+        system("cls");
         angka(pg);
         system("Pause");
         system("cls");
@@ -495,7 +497,8 @@ while (1) {
 
 repeat :
 keyPressed = getch();
-system("cls");
+if (keyPressed !=13) {
+system("cls");}
 
 if (keyPressed==27){
     lose();
@@ -504,6 +507,7 @@ if (keyPressed==27){
 if (keyPressed==13){
         if (x==y || x==z || x==a || y==z || y==a || z==a) {
         rpt=1;
+        system("cls");
         angka(pg);
         system("Pause");
         system("cls");
@@ -595,7 +599,8 @@ while (1) {
 
 repeat :
 keyPressed = getch();
-system("cls");
+if (keyPressed !=13) {
+system("cls");}
 
 if (keyPressed==27){
     lose();
@@ -604,6 +609,7 @@ if (keyPressed==27){
 if (keyPressed==13){
         if (x==y || x==z || x==a || y==z || y==a || z==a) {
         rpt=1;
+        system("cls");
         angka(pg);
         system("Pause");
         system("cls");
@@ -694,7 +700,8 @@ while (1) {
 
 repeat :
 keyPressed = getch();
-system("cls");
+if (keyPressed !=13) {
+system("cls");}
 
 if (keyPressed==27){
     lose();
@@ -703,6 +710,7 @@ if (keyPressed==27){
 if (keyPressed==13){
         if (x==y || x==z || x==a || y==z || y==a || z==a) {
         rpt=1;
+        system("cls");
         angka(pg);
         system("Pause");
         system("cls");
@@ -1163,7 +1171,16 @@ if (pos3==1 && kol==4) {
     printf("\t\t\t\t\t\t                                                              ##      \n");
     printf("\n\t\t\t\t\t\t                                                        ()============()\n");
 }
-printf("\n\n\n\n\n\n\n\n\n");
+        gotoxy(42,39);
+        printf("() ------------ ()");
+        gotoxy(64,39);
+        printf("() ------------ ()");
+        gotoxy(86,39);
+        printf("() ------------ ()");
+        gotoxy(108,39);
+        printf("() ------------ ()");
+
+printf("\n\n\n\n\n");
 printf("________________________________________________________________________________________________________________________________________________________________________\n\n");
 printf("[ESC] - Exit    [ENT] - Submit    [UP/DOWN] - Change Value    [LEFT/RIGHT] - Change Position \t ");
 }
@@ -1219,14 +1236,15 @@ int kerja(pg, kol) {
 
     if (x==kumpulan[0] && y==kumpulan[1] && z==kumpulan[2] && a==kumpulan[3]){
             if (PlaySound(TEXT("bgm-win.wav"), NULL, SND_ASYNC | SND_FILENAME)) {
+                system("cls");
                 printf("==========================================================================  Test Your Logic  ==========================================================================");
                 printf("\n\n\n\n\n\n\n\n\n\n\n\n");
                 printf("\t\t\t\t\t\t\t    ");
                 printf("== Well done, %s!!! You got the number in %d guesses ==\n", nama, n);
                 printf("\t\t\t\t\t\t\t\t              ");
                 printf("# SCORE: %d #\n\n", score);
-                FILE *out=fopen("final.csv","a");
-                fprintf(out,"%s,%d,EASY\n",nama, score);
+                FILE *out=fopen("easy.csv","a");
+                fprintf(out,"%s,%d\n",nama, score);
                 fclose(out);
                 x=0, y=0, z=0, a=0, pos = 8, pos1 = 8, pos2 = 8, pos3 = 8, score = 100, n=1;
                 farewell();
@@ -1234,38 +1252,86 @@ int kerja(pg, kol) {
     }
     else {
         if (x==kumpulan[0]) {
-        printf(" WHITE ");}
+        gotoxy(42,38);
+        printf("==================\n");
+        gotoxy(42,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(42,40);
+        printf("==================\n");
+        }
     else{
     for (i=0;i<4;i++){
         if (x==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(42,38);
+        printf("==================\n");
+        gotoxy(42,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(42,40);
+        printf("==================\n");
+        }
     }}
     if (y==kumpulan[1]) {
-        printf(" WHITE ");
+        gotoxy(64,38);
+        printf("==================\n");
+        gotoxy(64,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(64,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (y==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(64,38);
+        printf("==================\n");
+        gotoxy(64,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(64,40);
+        printf("==================\n");
+        }
     }}
     if (z==kumpulan[2]) {
-        printf(" WHITE ");
+        gotoxy(86,38);
+        printf("==================\n");
+        gotoxy(86,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(86,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (z==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(86,38);
+        printf("==================\n");
+        gotoxy(86,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(86,40);
+        printf("==================\n");
+        }
     }}
     if (a==kumpulan[3]) {
-        printf(" WHITE ");
+        gotoxy(108,38);
+        printf("==================\n");
+        gotoxy(108,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(108,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (a==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(108,38);
+        printf("==================\n");
+        gotoxy(108,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(108,40);
+        printf("==================\n");
+        }
     }}
     n = n+1;
     score = score-10;
+    gotoxy(64,7);
+    printf("Info : ");
+    gotoxy(71,7);
     system("pause");
     system("cls");
     fflush(stdin);
@@ -1282,44 +1348,43 @@ int kerja(pg, kol) {
 
 int logic(pg){
     system("cls");
-    if (PlaySound(TEXT("bgm-play.wav"), NULL, SND_ASYNC | SND_LOOP | SND_FILENAME))
-
-#define ESC 27
-keyPressed = 0;
+    if (PlaySound(TEXT("bgm-play.wav"), NULL, SND_ASYNC | SND_LOOP | SND_FILENAME)) {
+    #define ESC 27
 
         printf("==========================================================================  Test Your Logic  ==========================================================================");
-    if (pg==1) {
+        if (pg==1) {
         printf("\n\nLevel = Easy");}
-    else if (pg==2) {
+        else if (pg==2) {
         printf("\n\nLevel = Medium");}
-    else if (pg==3) {
+        else if (pg==3) {
         printf("\n\nLevel = Hard");}
 
-	gotoxy(0,35);
-	printf("\n\n\n\n\n\n\n\n\n");
-    printf("________________________________________________________________________________________________________________________________________________________________________\n\n");
-    printf("[ESC] - Back    [ENT] - Submit    [KEY] - Write \t ");
+        gotoxy(0,35);
+        printf("\n\n\n\n\n\n\n\n\n");
+        printf("________________________________________________________________________________________________________________________________________________________________________\n\n");
+        printf("[ESC] - Clear Input    [B.SPACE] - Delete    [ENT] - Submit    [KEY] - Write \t ");
 
-    gotoxy(52,20);
-    printf("--------------------------------------------------------------------");
-    gotoxy(52,22);
-    printf("--------------------------------------------------------------------");
-	gotoxy(52,21);
-	printf("Insert Your Name : ");
-	scanf(" %s", &nama); fflush(stdin);
+        gotoxy(52,20);
+        printf("--------------------------------------------------------------------");
+        gotoxy(52,22);
+        printf("--------------------------------------------------------------------");
+        gotoxy(52,21);
+        printf("Insert Your Name : ");
+        scanf("%s", &nama); fflush(stdin);
 
-    for (i=0; i<4; ++i){
-    kumpulan[i]= i;
-    }
-    for (i = 0; i < 4; ++i) {    // shuffle array
-    int temp = kumpulan[i];
-    int randomIndex = rand() % 3;
-    kumpulan[i]           = kumpulan[randomIndex];
-    kumpulan[randomIndex] = temp;
-}
+        for (i=0; i<4; ++i){
+        kumpulan[i]= i;
+        }
+        for (i = 0; i < 4; ++i) {    // shuffle array
+        int temp = kumpulan[i];
+        int randomIndex = rand() % 3;
+        kumpulan[i]           = kumpulan[randomIndex];
+        kumpulan[randomIndex] = temp;
+        }
     system("cls");
     sel1(pg);
     fflush(n);
+        }
 }
 
 int logic1(pg){
@@ -1365,6 +1430,7 @@ int kerja1(pg, kol){
 
     if (x==kumpulan[0] && y==kumpulan[1] && z==kumpulan[2] && a==kumpulan[3]){
         if (PlaySound(TEXT("bgm-win.wav"), NULL, SND_ASYNC | SND_FILENAME)) {
+                 system("cls");
                 printf("==========================================================================  Test Your Logic  ==========================================================================");
                 printf("\n\n\n\n\n\n\n\n\n\n\n\n");
                 printf("\t\t\t\t\t\t\t    ");
@@ -1372,48 +1438,95 @@ int kerja1(pg, kol){
                 printf("\t\t\t\t\t\t\t\t              ");
                 printf("# SCORE: %d #\n\n", scoremedium);
 
-        FILE *out=fopen("final.csv","a");
-        fprintf(out,"%s,%d,MEDIUM\n",nama, scoremedium);
+        FILE *out=fopen("medium.csv","a");
+        fprintf(out,"%s,%d\n",nama, scoremedium);
         fclose(out);
         x=0, y=0, z=0, a=0, pos = 8, pos1 = 8, pos2 = 8, pos3 = 8, scoremedium = 150, n=1;
     	farewell();
         }
     }
-    else{
-    if (x==kumpulan[0]) {
-        printf(" WHITE ");
-    }
+    else {
+        if (x==kumpulan[0]) {
+        gotoxy(42,38);
+        printf("==================\n");
+        gotoxy(42,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(42,40);
+        printf("==================\n");
+        }
     else{
     for (i=0;i<4;i++){
         if (x==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(42,38);
+        printf("==================\n");
+        gotoxy(42,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(42,40);
+        printf("==================\n");
+        }
     }}
     if (y==kumpulan[1]) {
-        printf(" WHITE ");
+        gotoxy(64,38);
+        printf("==================\n");
+        gotoxy(64,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(64,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (y==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(64,38);
+        printf("==================\n");
+        gotoxy(64,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(64,40);
+        printf("==================\n");
+        }
     }}
     if (z==kumpulan[2]) {
-        printf(" WHITE ");
+        gotoxy(86,38);
+        printf("==================\n");
+        gotoxy(86,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(86,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (z==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(86,38);
+        printf("==================\n");
+        gotoxy(86,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(86,40);
+        printf("==================\n");
+        }
     }}
     if (a==kumpulan[3]) {
-        printf(" WHITE ");
+        gotoxy(108,38);
+        printf("==================\n");
+        gotoxy(108,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(108,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (a==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(108,38);
+        printf("==================\n");
+        gotoxy(108,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(108,40);
+        printf("==================\n");
+        }
     }}
     n = n+1;
     scoremedium = scoremedium-10;
+    gotoxy(64,7);
+    printf("Info : ");
+    gotoxy(71,7);
     system("pause");
     system("cls");
     fflush(stdin);
@@ -1472,6 +1585,7 @@ int logic2(pg){
 int kerja2(pg, kol){
     if (x==kumpulan[0] && y==kumpulan[1] && z==kumpulan[2] && a==kumpulan[3]){
         if (PlaySound(TEXT("bgm-win.wav"), NULL, SND_ASYNC | SND_FILENAME)) {
+                 system("cls");
                 printf("==========================================================================  Test Your Logic  ==========================================================================");
                 printf("\n\n\n\n\n\n\n\n\n\n\n\n");
                 printf("\t\t\t\t\t\t\t    ");
@@ -1479,48 +1593,95 @@ int kerja2(pg, kol){
                 printf("\t\t\t\t\t\t\t\t              ");
                 printf("# SCORE: %d #\n\n", scorehard);
 
-        FILE *out=fopen("final.csv","a");
-        fprintf(out,"%s,%d,HARD\n",nama, scorehard);
+        FILE *out=fopen("hard.csv","a");
+        fprintf(out,"%s,%d\n",nama, scorehard);
         fclose(out);
     	x=0, y=0, z=0, a=0, pos = 8, pos1 = 8, pos2 = 8, pos3 = 8, scorehard = 200, n=1;
     	farewell();
         }
     }
-    else{
-    if (x==kumpulan[0]) {
-        printf(" WHITE ");
-    }
+     else {
+        if (x==kumpulan[0]) {
+        gotoxy(42,38);
+        printf("==================\n");
+        gotoxy(42,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(42,40);
+        printf("==================\n");
+        }
     else{
     for (i=0;i<4;i++){
         if (x==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(42,38);
+        printf("==================\n");
+        gotoxy(42,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(42,40);
+        printf("==================\n");
+        }
     }}
     if (y==kumpulan[1]) {
-        printf(" WHITE ");
+        gotoxy(64,38);
+        printf("==================\n");
+        gotoxy(64,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(64,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (y==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(64,38);
+        printf("==================\n");
+        gotoxy(64,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(64,40);
+        printf("==================\n");
+        }
     }}
     if (z==kumpulan[2]) {
-        printf(" WHITE ");
+        gotoxy(86,38);
+        printf("==================\n");
+        gotoxy(86,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(86,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (z==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(86,38);
+        printf("==================\n");
+        gotoxy(86,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(86,40);
+        printf("==================\n");
+        }
     }}
     if (a==kumpulan[3]) {
-        printf(" WHITE ");
+        gotoxy(108,38);
+        printf("==================\n");
+        gotoxy(108,39);
+        printf("()     WHITE    ()\n");
+        gotoxy(108,40);
+        printf("==================\n");
     }
     else{
     for (i=0;i<4;i++){
         if (a==kumpulan[i]){
-        printf(" BLACK ");}
+        gotoxy(108,38);
+        printf("==================\n");
+        gotoxy(108,39);
+        printf("()     BLACK    ()\n");
+        gotoxy(108,40);
+        printf("==================\n");
+        }
     }}
     n = n+1;
     scorehard = scorehard-10;
+    gotoxy(64,7);
+    printf("Info : ");
+    gotoxy(71,7);
     system("pause");
     system("cls");
     fflush(stdin);
@@ -1538,15 +1699,81 @@ int kerja2(pg, kol){
 int lead()
 {
 	system("cls");
-	printf("==========================================================================  Test Your Logic  ==========================================================================\n\n");
-	printf("Daftar Leaderboard\n\n");
+	printf("==========================================================================  Test Your Logic  ==========================================================================\n");
 	char buffer[1024] ;
     char *record,*line;
     int i=0,j=0;
     int mat[100][100];
-    FILE *fstream = fopen("final.csv","r");
+    int ny=17;
 
-	if(fstream == NULL)   {
+	    //OPEN BORDER
+	FILE *fp;
+	fp=fopen("border-leaderboard.txt", "r");
+	do
+    {
+		ser=getc(fp);
+		printf("%c", ser);
+	}
+	while(ser!=EOF);
+	fflush(stdin);
+
+    //OPEN FILE EASY
+	    FILE *fstream = fopen("easy.csv","r");
+
+    	while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL)
+    {
+		record = strtok(line,";");
+		while(record != NULL)
+			{
+             gotoxy(30, ny);
+			 printf("Data : %s",record) ;
+			 ny = ny + 1;
+            //here you can put the record into the array as per your requirement.
+			 mat[i][j++] = atoi(record) ;
+			 record = strtok(NULL,";");
+			}
+		++i ;
+	}
+
+	    //OPEN FILE MEDIUM
+	    ny=17;
+	    fstream = fopen("medium.csv","r");
+
+    	while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL)
+    {
+		record = strtok(line,";");
+		while(record != NULL)
+			{
+             gotoxy(72, ny);
+			 printf("Data : %s",record) ;
+			 ny = ny + 1;
+            //here you can put the record into the array as per your requirement.
+			 mat[i][j++] = atoi(record) ;
+			 record = strtok(NULL,";");
+			}
+		++i ;
+	}
+
+	    //OPEN FILE HARD
+	    ny=17;
+	    fstream = fopen("hard.csv","r");
+
+    	while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL)
+    {
+		record = strtok(line,";");
+		while(record != NULL)
+			{
+             gotoxy(114, ny);
+			 printf("Data : %s",record) ;
+			 ny = ny + 1;
+            //here you can put the record into the array as per your requirement.
+			 mat[i][j++] = atoi(record) ;
+			 record = strtok(NULL,";");
+			}
+		++i ;
+	}
+
+		if(fstream == NULL)   {
     gotoxy(50,20);
     printf("<<======================================================>>\n");
 	gotoxy(50,22);
@@ -1560,21 +1787,9 @@ int lead()
     menu();
     }
 
-	while((line=fgets(buffer,sizeof(buffer),fstream))!=NULL)
-    {
-		record = strtok(line,";");
-		while(record != NULL)
-			{
-			 printf("data : %s",record) ;
-//here you can put the record into the array as per your requirement.
-			 mat[i][j++] = atoi(record) ;
-			 record = strtok(NULL,";");
-			}
-		++i ;
-	}
-printf("\n");
-system ("Pause");
-menu();
+	gotoxy(0,40);
+	system("pause");
+	menu();
 }
 
 void gotoxy(ex, ye)
